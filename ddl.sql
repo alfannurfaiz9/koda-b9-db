@@ -1,0 +1,30 @@
+CREATE TABLE category(
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE bookshelf(
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(255),
+    location VARCHAR(255)
+);
+
+CREATE TABLE book(
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    title VARCHAR(255),
+    category_id INT REFERENCES category(id),
+    bookshelf_id INT REFERENCES bookshelf(id)
+);
+
+CREATE TABLE officer(
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    name VARCHAR(255)
+);
+
+CREATE TABLE loaning(
+    id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    book_id INT REFERENCES book(id),
+    officer_id INT REFERENCES officer(id),
+    people_name VARCHAR(255)
+);
+
